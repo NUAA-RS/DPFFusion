@@ -15,6 +15,13 @@
 python 3.10
 cuda 11.8
 ```
+### 1. Docker condition
+- Docker (https://docs.docker.com/get-docker/)
+- NVIDIA Docker(https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+### 2.  Docker mirror
+```bash
+docker build -t dpffusion:v1 .
+```
 
 ## Install
 
