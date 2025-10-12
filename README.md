@@ -39,6 +39,8 @@ python train.py
 python fuse.py
 ```
 
+## visualizations "![](./complete_quantitative_analysis.png)"
+
 ## Dataset
 
 Datasets (M3FD, MSRS, RoadScene) are used to train. You can get it from [here](https://pan.baidu.com/s/1lmLmkbbSMr_PEwZdr3HPhg?pwd=ktvq).
