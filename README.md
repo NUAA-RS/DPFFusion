@@ -39,7 +39,7 @@ python train.py
 python fuse.py
 ```
 
-## visualizations "![](./complete_quantitative_analysis.png)"
+## Visualization "![](./visualizations/complete_quantitative_analysis.png)"
 
 ## Dataset
 
