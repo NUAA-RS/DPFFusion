@@ -29,26 +29,35 @@ Before starting, ensure your system meets the following prerequisites:
 ◦Docker Desktop (Windows/Linux) ≥ 4.0.0 (with GPU support enabled)
 ◦For Windows: Ensure WSL 2 is installed (follow Microsoft's guide if missing)
 2. Build the Docker Image
-1.Clone the DPFFusion repository to your local machine (skip if already cloned):
+2.1.Clone the DPFFusion repository to your local machine (skip if already cloned):
 
+```
 git clone https://github.com/NUAA-RS/DPFFusion.git
 cd DPFFusion
-1.Ensure the pre-trained model model-1_1_10_1.pth is placed in the ./models directory (as provided in your project).
-2.Build the Docker image using the Dockerfile (replace dpffusion:v1 with your preferred image name/tag):
+```
+2.2.Ensure the pre-trained model model-1_1_10_1.pth is placed in the ./models directory (as provided in your project).
+2.3.Build the Docker image using the Dockerfile (replace dpffusion:v1 with your preferred image name/tag):
 
+```
 docker build -t dpffusion:v1 .
+```
 ◦Note: The first build may take 20–30 minutes (depends on network speed) as it downloads the CUDA base image and Python dependencies.
 ◦Verify the image is built successfully:
 
+```
 docker images | grep dpffusion
+```
 You should see output like:
 
+```
 dpffusion   v1   abc123456789   10 minutes ago   12.5GB
+```
 3. Run the Docker Container
 Use the following commands to start training or testing. The -v flag mounts local directories to the container for persistent storage (e.g., datasets, results).
 3.1 Training Command
 Run training with custom parameters (adjust --epochs, --batch_size, and mount paths as needed):
 
+```
 docker run -it --gpus all \
   -v $(pwd)/datasets:/app/datasets \  # Mount local dataset dir to container
   -v $(pwd)/results:/app/results \    # Mount local results dir to save outputs
@@ -59,6 +68,7 @@ docker run -it --gpus all \
     --batch_size 16 \
     --ckpt_save_path ./models \       # Save new checkpoints to mounted ./models
     --dataset M3FD                    # Replace with your target dataset
+```
 •Explanation:
 ◦--gpus all: Enables all available GPUs for the container.
 ◦-v $(pwd)/datasets:/app/datasets: Ensures the container uses your local dataset (avoids re-uploading data to the container).
@@ -66,12 +76,14 @@ docker run -it --gpus all \
 3.2 Testing Command
 Test the pre-trained model model-1_1_10_1.pth (adjust --dataset and model path as needed):
 
+```
 docker run -it --gpus all \
   -v $(pwd)/results:/app/results \    # Mount local dir to save test outputs
   dpffusion:v1 \
   python test.py \
     --dataset M3FD \                  # Replace with your test dataset
     --ckpt ./models/model-1_1_10_1.pth  # Path to pre-trained model (inside container)
+```
 •Verify Results: After testing, check the local ./results directory for output images and evaluation metrics (e.g., SSIM, PSNR scores).
 4. Troubleshooting
 •GPU Not Detected: Ensure --gpus all is included in the docker run command, and Docker Desktop GPU support is enabled (Windows: Settings → Resources → GPU; Linux: Install nvidia-container-toolkit).
