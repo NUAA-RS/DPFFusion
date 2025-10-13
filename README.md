@@ -13,7 +13,7 @@
 
 ```
 python 3.10
-cuda 11.8
+cuda 11.6
 ```
 ### Docker Usage Guide for DPFFusion
 
