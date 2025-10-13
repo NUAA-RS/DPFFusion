@@ -29,14 +29,15 @@ Before starting, ensure your system meets the following prerequisites:
 ◦Docker Desktop (Windows/Linux) ≥ 4.0.0 (with GPU support enabled)
 ◦For Windows: Ensure WSL 2 is installed (follow Microsoft's guide if missing)
 2. Build the Docker Image
-2.1.Clone the DPFFusion repository to your local machine (skip if already cloned):
+   
+  2.1.Clone the DPFFusion repository to your local machine (skip if already cloned):
 
 ```
 git clone https://github.com/NUAA-RS/DPFFusion.git
 cd DPFFusion
 ```
-2.2.Ensure the pre-trained model model-1_1_10_1.pth is placed in the ./models directory (as provided in your project).
-2.3.Build the Docker image using the Dockerfile (replace dpffusion:v1 with your preferred image name/tag):
+  2.2.Ensure the pre-trained model model-1_1_10_1.pth is placed in the ./models directory (as provided in your project).
+  2.3.Build the Docker image using the Dockerfile (replace dpffusion:v1 with your preferred image name/tag):
 
 ```
 docker build -t dpffusion:v1 .
