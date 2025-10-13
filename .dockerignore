@@ -1,0 +1,28 @@
+# Python相关
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 虚拟环境
+venv/
+env/
+*.egg-info/
+
+# 数据文件（如果体积较大）
+data/
+datasets/
+
+# 日志和缓存
+logs/
+.cache/
+
+# IDE配置
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
