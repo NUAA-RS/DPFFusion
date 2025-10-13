@@ -20,15 +20,24 @@ cuda 11.8
 This guide provides step-by-step instructions to replicate the DPFFusion training/testing environment using Docker, ensuring cross-platform reproducibility.
 1. Environment Requirements
 Before starting, ensure your system meets the following prerequisites:
+
 •Operating System: Windows 10/11 (WSL 2 enabled) or Linux (Ubuntu 18.04+/CentOS 7+)
+
 •NVIDIA Hardware: GPU with CUDA support (compute capability ≥ 6.0, e.g., GTX 1080Ti, RTX 2080Ti, A100)
+
 •NVIDIA Drivers:
+
 ◦Windows: Version ≥ 470.57.02 (minimum for CUDA 11.6)
+
 ◦Linux: Version ≥ 470.57.02 (install via `sudo apt install nvidia-driver-470` for Ubuntu)
+
 •Docker Software:
+
 ◦Docker Desktop (Windows/Linux) ≥ 4.0.0 (with GPU support enabled)
+
 ◦For Windows: Ensure WSL 2 is installed (follow Microsoft's guide if missing)
-2. Build the Docker Image
+
+3. Build the Docker Image
    
   2.1. Clone the DPFFusion repository to your local machine (skip if already cloned):
 
@@ -44,7 +53,9 @@ cd DPFFusion
 ```
 docker build -t dpffusion:v1 .
 ```
+
 ◦Note: The first build may take 20–30 minutes (depends on network speed) as it downloads the CUDA base image and Python dependencies.
+
 ◦Verify the image is built successfully:
 
 ```
@@ -74,8 +85,11 @@ docker run -it --gpus all \
     --dataset M3FD                    # Replace with your target dataset
 ```
 •Explanation:
+
 ◦`--gpus all`: Enables all available GPUs for the container.
+
 ◦`-v $(pwd)/datasets:/app/datasets`: Ensures the container uses your local dataset (avoids re-uploading data to the container).
+
 ◦Training logs and checkpoints will be saved to `./results` and `./models` (local directories, persistent after the container exits).
 
   3.2. Testing Command
@@ -92,8 +106,11 @@ docker run -it --gpus all \
 •Verify Results: After testing, check the local `./results` directory for output images and evaluation metrics (e.g., MI, VIF scores).
 
 4. Troubleshooting
+   
 •GPU Not Detected: Ensure `--gpus all` is included in the `docker run` command, and Docker Desktop GPU support is enabled (Windows: Settings → Resources → GPU; Linux: Install `nvidia-container-toolkit`).
+
 •Slow Build Speed: Use a Docker mirror (e.g., Alibaba Cloud) by adding `RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list` to the `Dockerfile` before `apt-get update`.
+
 •Permission Errors: On Linux, run `sudo chmod -R 755 ./datasets ./results ./models` to grant read/write permissions for mounted directories.
 
 
