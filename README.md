@@ -142,3 +142,16 @@ python fuse.py
 ## Dataset
 
 Datasets (M3FD, MSRS, RoadScene) are used to train. You can get it from [here](https://pan.baidu.com/s/1lmLmkbbSMr_PEwZdr3HPhg?pwd=ktvq).
+
+## Cite
+
+@ARTICLE{11300782,
+  author={Li, Shenzhi and Li, Chao and Zhu, Hao and Wang, Peng},
+  journal={IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing}, 
+  title={DPFFusion: A Dual-Domain Parallel Feature Fusion Network for Infrared and Visible Image Dual-Domain Fusion}, 
+  year={2026},
+  volume={19},
+  number={},
+  pages={2285-2299},
+  keywords={Frequency-domain analysis;Image edge detection;Feature extraction;Technological innovation;Roads;Fast Fourier transforms;Remote sensing;Real-time systems;Image fusion;Electronic mail;Channel attention;deformable convolution;dual-domain parallel network;fast Fourier transform (FFT);infrared (IR) and Visible (VIS) image dual-domain fusion (IVIDF)},
+  doi={10.1109/JSTARS.2025.3644377}}
